@@ -1,3 +1,5 @@
+const Authors = require("../models/Authors");
+
 const getAllAuthors = (req, res) => {
   res.status(200).json({
     message: `${req.method} - Request to Author endpoint`,
@@ -15,6 +17,9 @@ const getAuthorById = (req, res) => {
 };
 
 const createAuthor = (req, res) => {
+  const { author } = req.body;
+  console.log("data >>>", author);
+  Authors.create(author);
   res.status(200).json({
     message: `${req.method} - Request to Author endpoint`,
     success: true,
